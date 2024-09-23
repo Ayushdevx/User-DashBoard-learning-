@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { QueryClient, QueryClientProvider, useQuery, useMutation } from 'react-query';
 import { Doughnut, Bar, Line, Radar } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, BarElement, LineElement, PointElement, RadialLinearScale, Title, Tooltip as ChartTooltip, Legend } from 'chart.js';
-import { FaCode, FaClipboardCheck, FaTrophy, FaCalendarAlt, FaCog, FaBell, FaUserFriends, FaChartLine, FaGraduationCap, FaLaptopCode, FaBrain, FaRocket, FaBook, FaDownload, FaHome, FaListAlt, FaUser } from 'react-icons/fa';
+import { FaCode, FaClipboardCheck, FaTrophy, FaCalendarAlt, FaCog, FaBell, FaUserFriends, FaChartLine, FaGraduationCap, FaLaptopCode, FaBrain, FaRocket, FaBook, FaDownload, FaHome, FaListAlt, FaUser, FaSun, FaMoon} from 'react-icons/fa';
 import { jsPDF } from "jspdf";
 import { Calendar } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -21,7 +21,7 @@ const DashboardContext = createContext();
 
 const theme = extendTheme({
   config: {
-    initialColorMode: 'light',
+    initialColorMode: 'dark',
     useSystemColorMode: false,
   },
   colors: {
@@ -237,6 +237,13 @@ const Dashboard = () => {
             <Flex justify="space-between" align="center">
               <Heading size="lg" color={textColor}>Programming Journey Dashboard</Heading>
               <Flex align="center">
+                <IconButton
+                  aria-label="Toggle theme"
+                  icon={colorMode === "dark" ? <FaSun /> : <FaMoon />}
+                  onClick={toggleColorMode}
+                  mr={0}
+                  variant="ghost"
+                />
                 <Switch
                   colorScheme="purple"
                   isChecked={colorMode === 'dark'}
